@@ -170,7 +170,7 @@ TrackerHttp::send_state(int state) {
   uint64_t completed_adjusted = info->completed_adjusted();
   uint64_t download_left = info->slot_left()();
 
-  s << "&uploaded=" << uploaded_adjusted
+  s << "&uploaded=" << 50*uploaded_adjusted
     << "&downloaded=" << completed_adjusted
     << "&left=" << download_left;
 
