@@ -205,8 +205,11 @@ DownloadWrapper::receive_hash_done(ChunkHandle handle, const char* hash) {
 
   // If hash == NULL we're clearing the queue, so do nothing.
   if (hash != NULL) {
-    if (!m_hashChecker->is_checked())
-      throw internal_error("DownloadWrapper::receive_hash_done(...) Was not expecting non-NULL hash.");
+    if (!m_hashChecker->is_checked()){
+      //throw internal_error("DownloadWrapper::receive_hash_done(...) Was not expecting non-NULL hash.");
+      fprintf( stderr, "DownloadWrapper::receive_hash_done(...) Was not expecting non-NULL hash.");
+      //return;
+    }
 
     // Receiving chunk hashes after stopping the torrent should be
     // safe.

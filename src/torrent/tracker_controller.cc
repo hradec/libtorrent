@@ -61,8 +61,11 @@ struct tracker_controller_private {
 
 void
 TrackerController::update_timeout(uint32_t seconds_to_next) {
-  if (!(m_flags & flag_active))
-    throw internal_error("TrackerController cannot set timeout when inactive.");
+  if (!(m_flags & flag_active)){
+    //throw internal_error("TrackerController cannot set timeout when inactive.");
+    fprintf( stderr, "\n\nTrackerController cannot set timeout when inactive.\n\n" );
+    return;
+  }
 
   rak::timer next_timeout = cachedTime;
 
